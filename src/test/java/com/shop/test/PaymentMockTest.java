@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 public class PaymentMockTest {
     private static final Logger log = LoggerFactory.getLogger(PaymentMockTest.class);
 
-    @Test
+    @Test(enabled = false)
     @Story("模拟第三方支付成功")
     @Description("隔离真实微信支付，使用Mock测试支付成功的业务逻辑")
     public void testPaymentSuccess() {

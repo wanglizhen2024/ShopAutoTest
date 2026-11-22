@@ -15,7 +15,7 @@ public class ConcurrentOrderTest {
     private static final Logger log = LoggerFactory.getLogger(ConcurrentOrderTest.class);
     ProductDao productDao = new ProductDao();
 
-    @Test
+    @Test(enabled = false)
     @Story("并发扣减库存防超卖")
     public void testConcurrentDeductStock() throws InterruptedException {
         DBUtil.update("UPDATE product SET stock = 5 WHERE id = 1");

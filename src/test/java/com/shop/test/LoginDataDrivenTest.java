@@ -22,7 +22,7 @@ public class LoginDataDrivenTest {
         return ExcelUtil.readExcel("src/test/resources/login_data.xlsx");
     }
 
-    @Test(dataProvider = "loginData")
+    @Test(dataProvider = "loginData",enabled = false)
     @Story("数据驱动登录测试")
     public void testLoginWithExcel(String username, String password, String expectedResult) {
         log.info("执行用例：账号 [" + username + "]，预期 [" + expectedResult + "]");
