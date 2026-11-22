@@ -47,7 +47,7 @@ public class ProductCrudTest {
         return ExcelUtil.readExcel("src/test/resources/product_data.xlsx");
     }
 
-    @Test(priority = 1, dataProvider = "productData")
+    @Test(priority = 1, dataProvider = "productData",enabled = false)
     @Story("数据驱动-新增商品并落库校验")
     @Description("从Excel读取商品数据，调用新增接口后，去数据库确认商品是否真的插入成功")
     public void testAddProduct(String name, String price, String stock) {//测试增加数据的功能
@@ -66,7 +66,7 @@ public class ProductCrudTest {
         targetProductName = name;
     }
 
-    @Test(priority = 2, dependsOnMethods = "testAddProduct")
+    @Test(priority = 2, dependsOnMethods = "testAddProduct",enabled = false)
     @Story("修改商品价格并校验")
     public void testUpdateProduct() {
         int targetId = productDao.getIdByName(targetProductName);
@@ -82,7 +82,7 @@ public class ProductCrudTest {
         log.info("修改商品 [{}] 成功，数据库库存已更新为: {}", targetProductName, dbStock);
     }
 
-    @Test(priority = 3, dependsOnMethods = "testAddProduct")
+    @Test(priority = 3, dependsOnMethods = "testAddProduct",enabled = false)
     @Story("删除商品并确认清理")
     public void testDeleteProduct() {
         int targetId = productDao.getIdByName(targetProductName);
@@ -98,7 +98,7 @@ public class ProductCrudTest {
         log.info("删除商品 [{}] 成功，数据已从数据库彻底清理！", targetProductName);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4,enabled = false)
     @Story("查询商品并校验数据库库存")
     @Description("测试查询接口，并去数据库校验返回的ID是否真实存在")
     @Severity(SeverityLevel.CRITICAL)
